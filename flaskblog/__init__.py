@@ -22,7 +22,8 @@ login_manager.login_view = 'users.login'
 mail = Mail()
 
 
-def create_app(config_class=Config):
+def create_app(config_class=Config):  # pylint: disable=unused-arguments
+    """ Function used for creating a flask app instance """
     app = Flask(__name__, template_folder='./templates')
     app.config.from_object(Config)
 
@@ -31,10 +32,10 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
-    from flaskblog.users.routes import users
-    from flaskblog.posts.routes import posts
-    from flaskblog.main.routes import main
-    from flaskblog.errors.handlers import errors
+    from flaskblog.users.routes import users  # pylint: disable=import-outside-toplevel
+    from flaskblog.posts.routes import posts  # pylint: disable=import-outside-toplevel
+    from flaskblog.main.routes import main  # pylint: disable=import-outside-toplevel
+    from flaskblog.errors.handlers import errors  # pylint: disable=import-outside-toplevel
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
