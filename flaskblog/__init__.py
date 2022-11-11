@@ -22,7 +22,7 @@ login_manager.login_view = 'users.login'
 mail = Mail()
 
 
-def create_app(config_class=Config):  # pylint: disable=unused-arguments
+def create_app(config_class=Config):  # pylint: disable=unknown-option-value, unused-argument
     """ Function used for creating a flask app instance """
     app = Flask(__name__, template_folder='./templates')
     app.config.from_object(Config)
